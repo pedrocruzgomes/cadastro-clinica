@@ -1,7 +1,7 @@
 {% extends "main/base.html" %}
 {% block content %}
 <form method="GET">
-    <input type="text" name="nome" placeholder="Buscar por nome"/>
+    <input type="text" name="nome" placeholder="Buscar por nome ou CPF"/>
     <input type="submit" value="Buscar">
 </form>
 <a href="{%  url 'cliente.novo' %}">Novo</a>
@@ -31,6 +31,7 @@
             <td>
                 <a href="{% url 'cliente.atualizar' cliente.pk %}">Editar</a>
                 <a href="{% url 'cliente.excluir' cliente.pk %}">Excluir</a>
+                <a href="{% url 'cliente.animais' cliente.pk %}">Animais</a>
             </td>
         </tr>
         {% endfor %}

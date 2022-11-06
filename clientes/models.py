@@ -12,3 +12,14 @@ class Cliente(models.Model):
 
     def __str__(self) -> str:
         return self.nome_completo
+
+
+class Animal(models.Model):
+    nome = models.CharField(max_length=256, null=False, blank=False)
+    raca = models.CharField(max_length=256, null=False, blank=False)
+    nascimento = models.DateField(null = False, blank=False)
+    nome_dono = models.CharField(max_length=256, null=False, blank=False)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return self.nome

@@ -1,0 +1,34 @@
+{% extends "main/base.html" %}
+{% block content %}
+<form method="GET">
+    <input type="text" name="nome" placeholder="Buscar por nome ou raça"/>
+    <input type="submit" value="Buscar">
+</form>
+<a href="{%  url 'animal.novo' pk_cliente %}">Novo</a>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Raça</th>
+            <th>Data de Nascimento</th>
+            <th>Nome do Dono</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for animal in animais %}
+        <tr>
+            <td>{{ animal.nome }}</td>
+            <td>{{ animal.raca }}</td>
+            <td>{{ animal.nascimento|date:"d/m/Y" }}</td>
+            <td>{{ animal.nome_dono }}</td>
+            <td>
+                <a href="{% url 'animal.atualizar' pk_cliente animal.pk %}">Editar</a>
+                <a href="{% url 'animal.excluir' pk_cliente animal.pk %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
