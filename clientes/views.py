@@ -12,6 +12,7 @@ class ListaClienteView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+        queryset = queryset.filter(usuario=self.request.user)
         filtro_nome_cpf = self.request.GET.get('nome' or 'cpf') or None
 
         if filtro_nome_cpf:
@@ -24,6 +25,10 @@ class ClienteCreateView(CreateView):
     model = Cliente
     form_class = ClienteForm
     success_url = '/clientes/'
+
+    def form_valid(self, form):
+        form.instance.usuario = self.request.user
+        return super().form_valid(form)
 
 
 class ClienteUpdateView(UpdateView):
@@ -38,7 +43,7 @@ class ClienteDeleteView(DeleteView):
 
 
 def animais(request, pk_cliente):
-    animais = Animal.objects.filter(nome_dono=pk_cliente)
+    animais = Animal.objects.filter(cliente=pk_cliente)
     return render(request, 'animais/animal_list.html', {'animais': animais, 'pk_cliente': pk_cliente})
 
 
@@ -67,7 +72,6 @@ def animal_editar(request, pk_cliente, pk):
     return render(request, 'animais/animal_form.html', {'form': form})
 
 
-def animal_remover(request, pk_cliente, pk):
-    animal = get_object_or_404(Animal, pk=pk)
-    animal.delete()
-    return redirect(reverse('cliente.animais', args=[pk_cliente]))
+class AnimalDeleteView(DeleteView):
+    model = Animal
+    success_url = '/clientes/'

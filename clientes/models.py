@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Cliente(models.Model):
@@ -9,6 +10,7 @@ class Cliente(models.Model):
     endereco = models.CharField(max_length=256, null=False, blank=False)
     bairro = models.CharField(max_length=256, null=False, blank=False)
     cidade = models.CharField(max_length=256, null=False, blank=False)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self) -> str:
         return self.nome_completo

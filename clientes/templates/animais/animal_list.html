@@ -1,9 +1,5 @@
 {% extends "main/base.html" %}
 {% block content %}
-<form method="GET">
-    <input type="text" name="nome" placeholder="Buscar por nome ou raça"/>
-    <input type="submit" value="Buscar">
-</form>
 <a href="{%  url 'animal.novo' pk_cliente %}">Novo</a>
 <table>
     <thead>

@@ -7,10 +7,14 @@
     <title>Clínica Veterinária</title>
 </head>
 <body>
-    <ul>
-        <li><a href="{%  url 'home' %}">Página Inicial</a></li>
-        <li><a href="{%  url 'cliente.index' %}">Clientes</a></li>
-    </ul>
+    {% include "main/menu.html" %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     {% block content %}
     {% endblock content %}
 </body>
