@@ -1,21 +1,71 @@
 {% extends "main/base.html" %}
 {% block content %}
+<style>
+    table tbody tr{
+        text-align: center;
+    }
+    table{
+        border-collapse: collapse;
+        border: 5px black;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .filtro{
+        text-align: center;
+        margin-left: 600px;
+        margin-top: 15px;
+        border: 1px solid black;
+    }
+    .btn-acoes{
+        background-color: white;
+        text-decoration: none;
+        border: 2px solid black;
+        border-radius: 5px;
+        color: black;
+        padding: 5px 5px;
+        text-align: center;
+        display: flex;
+        margin:1px;
+        align-items: center;
+    }
+    .btn-novo{
+        background-color: white;
+        text-decoration: none;
+        border: 2px solid black;
+        border-radius: 5px;
+        color: black;
+        text-align: center;
+        padding: 5px 5px;
+        margin-top: 5px;
+    }
+    .btn-novo:hover{
+        background-color: aqua;
+    }
+    #btn-excluir:hover{
+        background-color: red;
+    }
+    #btn-editar:hover{
+        background-color: green;
+    }
+    #btn-animais:hover{
+        background-color: blue;
+    }
+</style>
 <form method="GET">
-    <input type="text" name="nome" placeholder="Buscar por nome ou CPF"/>
+    <input class="filtro" type="text" name="nome" placeholder="Buscar por nome ou CPF"/>
     <input type="submit" value="Buscar">
 </form>
-<a href="{%  url 'cliente.novo' %}">Novo</a>
-<table>
+<table width="100%" border="1px" bgcolor="#FFF">
     <thead>
         <tr>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Telefone</th>
-            <th>Endereço</th>
-            <th>Bairro</th>
-            <th>Cidade</th>
-            <th>Data de Nascimento</th>
-            <th>Ações</th>
+            <th width="20%">Nome</th>
+            <th width="20%">CPF</th>
+            <th width="20%" >Telefone</th>
+            <th width="20%">Endereço</th>
+            <th width="20%">Bairro</th>
+            <th width="20%">Cidade</th>
+            <th width="20%">Data de Nascimento</th>
+            <th width="20%">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -29,13 +79,14 @@
             <td>{{ cliente.cidade }}</td>
             <td>{{ cliente.data_nascimento|date:"d/m/Y" }}</td>
             <td>
-                <a href="{% url 'cliente.atualizar' cliente.pk %}">Editar</a>
-                <a href="{% url 'cliente.excluir' cliente.pk %}">Excluir</a>
-                <a href="{% url 'cliente.animais' cliente.pk %}">Animais</a>
+                <a href="{% url 'cliente.atualizar' cliente.pk %}" class="btn-acoes" id="btn-editar">Editar</a>
+                <a href="{% url 'cliente.excluir' cliente.pk %}" class="btn-acoes" id="btn-excluir">Excluir</a>
+                <a href="{% url 'cliente.animais' cliente.pk %}" class="btn-acoes" id="btn-animais">Animais</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<a href="{%  url 'cliente.novo' %}" class="btn-novo">Novo</a>
 
 {% endblock content %}

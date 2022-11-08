@@ -1,11 +1,36 @@
 {% extends "main/base.html" %}
 {% block content %}
-<form method="POST">
+<style>
+    body{
+        margin: 0;
+    }
+    .text-center{
+        text-align: center;
+    }
+    .formulario{
+        text-align: center;
+
+    }
+    .text-login{
+        text-align: center;
+    }
+    .btn-cadastro{
+        background-color: blue;
+        text-decoration: none;
+        border: 3px solid blue;
+        border-radius: 5px;
+        color: white;
+    }
+</style>
+<div class="text-login">
+    <h3>Faça login para entrar no sistema</h3>
+</div>
+<form class="formulario" method="POST">
 {% csrf_token %}
 {{form.as_p}}
 <input type="submit" value="Login">
 </form>
-<p class="text=center">Não possui conta?
-    <a href="/accounts/register">Cadastre-se</a>
+<p class="text-center">Não possui conta?
+    <a href="/accounts/register" class="btn-cadastro">Cadastre-se</a>
 </p>
 {% endblock content %}

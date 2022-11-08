@@ -1,14 +1,55 @@
 {% extends "main/base.html" %}
 {% block content %}
-<a href="{%  url 'animal.novo' pk_cliente %}">Novo</a>
-<table>
+<style>
+    table tbody tr{
+        text-align: center;
+    }
+    table{
+        border-collapse: collapse;
+        border: 5px black;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    .btn-acoes{
+        background-color: white;
+        text-decoration: none;
+        border: 2px solid black;
+        border-radius: 5px;
+        color: black;
+        padding: 5px 5px;
+        text-align: center;
+        display: flex;
+        margin:1px;
+        width: 20%;
+    }
+    #btn-excluir:hover{
+        background-color: red;
+    }
+    #btn-editar:hover{
+        background-color: green;
+    }
+    .btn-novo{
+        background-color: white;
+        text-decoration: none;
+        border: 2px solid black;
+        border-radius: 5px;
+        color: black;
+        text-align: center;
+        padding: 5px 5px;
+        margin-top: 5px;
+    }
+    .btn-novo:hover{
+        background-color: aqua;
+    }
+</style>
+<table width="100%" border="1px" bgcolor="#FFF">
     <thead>
         <tr>
-            <th>Nome</th>
-            <th>Raça</th>
-            <th>Data de Nascimento</th>
-            <th>Nome do Dono</th>
-            <th>Ações</th>
+            <th width="20%">Nome</th>
+            <th width="20%">Raça</th>
+            <th width="20%">Data de Nascimento</th>
+            <th width="20%">Nome do Dono</th>
+            <th width="20%">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -19,12 +60,12 @@
             <td>{{ animal.nascimento|date:"d/m/Y" }}</td>
             <td>{{ animal.nome_dono }}</td>
             <td>
-                <a href="{% url 'animal.atualizar' pk_cliente animal.pk %}">Editar</a>
-                <a href="{% url 'animal.excluir' pk_cliente animal.pk %}">Excluir</a>
+                <a href="{% url 'animal.atualizar' pk_cliente animal.pk %}" class="btn-acoes" id="btn-editar">Editar</a>
+                <a href="{% url 'animal.excluir' pk_cliente animal.pk %}" class="btn-acoes" id="btn-excluir">Excluir</a>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
+<a href="{%  url 'animal.novo' pk_cliente %}" class="btn-novo">Novo</a>
 {% endblock content %}

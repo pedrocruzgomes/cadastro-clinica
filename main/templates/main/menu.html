@@ -1,7 +1,48 @@
 {% if user.is_authenticated %}
+<style>
+    nav{
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        border-bottom: 1px solid black;
+    }
+    nav ul{
+        display: flex;
+        align-items: center;
+        list-style: none;
+    }
+    ul li{
+        margin-right: 10px;
+    }
+    ul li a{
+        color: black;
+    }
+    .btn-menu{
+        background-color: gray;
+        text-decoration: none;
+        border: 2px solid black;
+        border-radius: 5px;
+        color: black;
+        padding: 5px 7px;
+        text-align: center;
+        margin: 20px;
+    }
+    #btn-logout:hover{
+        background-color: red;
+    }
+    #btn-clientes:hover{
+        background-color: green;
+    }
+    #btn-homepage:hover{
+        background-color: blue;
+    }
+</style>
+<nav>
+    <h2>Sistema Clínica</h2>
     <ul>
-        <li><a href="{%  url 'home' %}">Página Inicial</a></li>
-        <li><a href="{%  url 'cliente.index' %}">Clientes</a></li>
-        <li><a href="{%  url 'logout' %}">Logout</a></li>
+        <li><a href="{%  url 'home' %}" class="btn-menu" id="btn-homepage">Página Inicial</a></li>
+        <li><a href="{%  url 'cliente.index' %}" class="btn-menu" id="btn-clientes">Clientes</a></li>
+        <li><a href="{%  url 'logout' %}" class="btn-menu" id="btn-logout">Logout</a></li>
     </ul>
 {% endif %}
+</nav>
