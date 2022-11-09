@@ -3,12 +3,26 @@
 <style>
     table tbody tr{
         text-align: center;
+        background-color: white;
+    }
+    table thead tr{
+        background-color: black;
+        color: white;
+        border-collapse: collapse;
+        border: 1px white;
+        height: 30px;
     }
     table{
         border-collapse: collapse;
-        border: 5px black;
+        border: 2px solid black;
         margin-top: 15px;
         margin-bottom: 15px;
+        margin-left: 15px;
+        width: 98%;
+        table-layout: auto;
+    }
+    tbody tr:hover{
+        background-color: gray;
     }
     .btn-acoes{
         background-color: white;
@@ -17,10 +31,9 @@
         border-radius: 5px;
         color: black;
         padding: 5px 5px;
-        text-align: center;
         display: flex;
         margin:1px;
-        width: 20%;
+        width: 50px;
     }
     #btn-excluir:hover{
         background-color: red;
@@ -42,30 +55,44 @@
         background-color: aqua;
     }
 </style>
-<table width="100%" border="1px" bgcolor="#FFF">
-    <thead>
-        <tr>
-            <th width="20%">Nome</th>
-            <th width="20%">Raça</th>
-            <th width="20%">Data de Nascimento</th>
-            <th width="20%">Nome do Dono</th>
-            <th width="20%">Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for animal in animais %}
-        <tr>
-            <td>{{ animal.nome }}</td>
-            <td>{{ animal.raca }}</td>
-            <td>{{ animal.nascimento|date:"d/m/Y" }}</td>
-            <td>{{ animal.nome_dono }}</td>
-            <td>
-                <a href="{% url 'animal.atualizar' pk_cliente animal.pk %}" class="btn-acoes" id="btn-editar">Editar</a>
-                <a href="{% url 'animal.excluir' pk_cliente animal.pk %}" class="btn-acoes" id="btn-excluir">Excluir</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-<a href="{%  url 'animal.novo' pk_cliente %}" class="btn-novo">Novo</a>
+<div>
+    <h3>Animais Cadastrados</h3>
+</div>
+<div style="overflow-x:auto">
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Animal</th>
+                <th>Nome</th>
+                <th>Raça</th>
+                <th>Data de Nascimento</th>
+                <th>Nome do Dono</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for animal in animais %}
+            <tr>
+                <td>{{ animal.tipo_animal }}</td>
+                <td>{{ animal.nome }}</td>
+                <td>
+                {% if animal.raca %}
+                {{ animal.raca }}
+                {% else %}
+                Não Informado
+                {% endif %}
+                </td>
+                <td>{{ animal.nascimento|date:"d/m/Y" }}</td>
+                <td>{{ animal.nome_dono }}</td>
+                <td>
+                    <a href="{% url 'animal.atualizar' pk_cliente animal.pk %}" class="btn-acoes" id="btn-editar">Editar</a>
+                    <a href="{% url 'animal.excluir' pk_cliente animal.pk %}" class="btn-acoes" id="btn-excluir">Excluir</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<a href="{%  url 'animal.novo' pk_cliente %}" class="btn-novo">Adicionar Animal</a>
+<a href="{%  url 'cliente.index' %}" class="btn-novo">Voltar</a>
 {% endblock content %}

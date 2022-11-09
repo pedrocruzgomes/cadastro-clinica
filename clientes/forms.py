@@ -10,7 +10,7 @@ class ClienteForm(forms.ModelForm):
     )
     class Meta:
         model = Cliente
-        fields = ['nome_completo', 'cpf', 'telefone', 'endereco', 'bairro', 'cidade', 'data_nascimento']
+        fields = ['nome_completo', 'cpf', 'data_nascimento', 'telefone', 'rua', 'bairro', 'cidade']
 
 
 class AnimalForm(forms.ModelForm):
@@ -21,4 +21,4 @@ class AnimalForm(forms.ModelForm):
     )
     class Meta:
         model = Animal
-        fields = ['nome', 'raca', 'nascimento', 'nome_dono']
+        fields = ['tipo_animal', 'nome', 'raca', 'nascimento', 'nome_dono']

@@ -1,8 +1,45 @@
 {% extends "main/base.html" %}
+{% load widget_tweaks %}
 {% block content %}
+<style>
+    .form-control{
+        width: 200px;
+        height: 20px;
+        margin-bottom: 15px;
+    }
+    .formulario{
+        text-align: center;
+    }
+    .text-label{
+        color: black;
+    }
+</style>
+<div class="formulario">
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        <h3>Cadastro de Cliente</h3>
+        <label for="nome_cliente" class="text-label">Nome:</label>
+        {% render_field form.nome_completo class="form-control" id="nome_cliente" %}
+        <br>
+        <label for="cpf_cliente" class="text-label">CPF:</label>
+        {% render_field form.cpf class="form-control" id="cpf_cliente" %}
+        <br>
+        <label for="nascimento_cliente" class="text-label">Data de Nascimento:</label>
+        {% render_field form.data_nascimento class="form-control" id="nascimento_cliente" %}
+        <br>
+        <label for="telefone_cliente" class="text-label">Telefone:</label>
+        {% render_field form.telefone class="form-control" id="telefone_cliente" %}
+        <br>
+        <label for="rua_cliente" class="text-label">Rua:</label>
+        {% render_field form.rua class="form-control" id="rua_cliente" %}
+        <br>
+        <label for="bairro_cliente" class="text-label">Bairro:</label>
+        {% render_field form.bairro class="form-control" id="bairro_cliente" %}
+        <br>
+        <label for="cidade_cliente" class="text-label">Cidade:</label>
+        {% render_field form.cidade class="form-control" id="cidade_cliente" %}
+        <br>
         <input type="submit" value="Salvar">
     </form>
+</div>
 {% endblock content %}

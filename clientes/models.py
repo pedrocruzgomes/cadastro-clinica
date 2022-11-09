@@ -7,7 +7,7 @@ class Cliente(models.Model):
     cpf = models.CharField(max_length=14, null=False, blank=False)
     data_nascimento = models.DateField(null=False, blank=False)
     telefone = models.CharField(max_length=14, null=False, blank=False)
-    endereco = models.CharField(max_length=256, null=False, blank=False)
+    rua = models.CharField(max_length=256, null=False, blank=False)
     bairro = models.CharField(max_length=256, null=False, blank=False)
     cidade = models.CharField(max_length=256, null=False, blank=False)
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -17,9 +17,10 @@ class Cliente(models.Model):
 
 
 class Animal(models.Model):
+    tipo_animal = models.CharField(max_length=256, null=False, blank=False)
     nome = models.CharField(max_length=256, null=False, blank=False)
-    raca = models.CharField(max_length=256, null=False, blank=False)
-    nascimento = models.DateField(null = False, blank=False)
+    raca = models.CharField(max_length=256, null=True, blank=True)
+    nascimento = models.DateField(null=True)
     nome_dono = models.CharField(max_length=256, null=False, blank=False)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
 
