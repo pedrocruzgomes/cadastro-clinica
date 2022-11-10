@@ -19,6 +19,7 @@ class AnimalForm(forms.ModelForm):
             attrs={"type": "date"}
         )
     )
+    image = forms.ImageField(label='Imagem', required=False)
     class Meta:
         model = Animal
-        fields = ['tipo_animal', 'nome', 'raca', 'nascimento', 'nome_dono']
+        fields = ['tipo_animal', 'nome', 'raca', 'nascimento', 'nome_dono', 'image']

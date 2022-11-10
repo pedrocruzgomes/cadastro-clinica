@@ -2,44 +2,105 @@
 {% load widget_tweaks %}
 {% block content %}
 <style>
-    .form-control{
-        width: 200px;
-        height: 20px;
-        margin-bottom: 15px;
+    body{
+        margin: 0;
+    }
+    .main-cadastro-cliente{
+        background-color: #5F9998;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cadastro-cliente{
+        width: 50vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .card-cadastro-cliente{
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px 35px;
+        background-color: #3A5E5E;
+        border-radius: 20px;
+        box-shadow: 0px 10px 40px black;
+    }
+    .card-cadastro-cliente h1{
+        color: #000000;
+        font-weight: 800;
+        margin: 0;
     }
     .formulario{
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
     }
-    .text-label{
+    .form-control{
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        background-color: white;
+        outline: none;
+        box-sizing: border-box;
+    }
+    .textfield label{
         color: black;
+        margin-bottom: 10px;
+    }
+    .textfield{
+        width: 100%;
+    }
+    .btn-salvar{
+        width: 100%;
+        padding: 16px 0px;
+        margin-top: 25px;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+        font-weight: 800;
+        background-color: #85D6D5;
+        cursor: pointer;
     }
 </style>
-<div class="formulario">
-    <form method="post">
-        {% csrf_token %}
-        <h3>Cadastro de Cliente</h3>
-        <label for="nome_cliente" class="text-label">Nome:</label>
-        {% render_field form.nome_completo class="form-control" id="nome_cliente" %}
-        <br>
-        <label for="cpf_cliente" class="text-label">CPF:</label>
-        {% render_field form.cpf class="form-control" id="cpf_cliente" %}
-        <br>
-        <label for="nascimento_cliente" class="text-label">Data de Nascimento:</label>
-        {% render_field form.data_nascimento class="form-control" id="nascimento_cliente" %}
-        <br>
-        <label for="telefone_cliente" class="text-label">Telefone:</label>
-        {% render_field form.telefone class="form-control" id="telefone_cliente" %}
-        <br>
-        <label for="rua_cliente" class="text-label">Rua:</label>
-        {% render_field form.rua class="form-control" id="rua_cliente" %}
-        <br>
-        <label for="bairro_cliente" class="text-label">Bairro:</label>
-        {% render_field form.bairro class="form-control" id="bairro_cliente" %}
-        <br>
-        <label for="cidade_cliente" class="text-label">Cidade:</label>
-        {% render_field form.cidade class="form-control" id="cidade_cliente" %}
-        <br>
-        <input type="submit" value="Salvar">
-    </form>
+<div class="main-cadastro-cliente">
+    <div class="cadastro-cliente">
+        <div class="card-cadastro-cliente">
+            <h3>CADASTRO DE CLIENTE</h3>
+            <div class="textfield">
+                <form class="formulario" method="post">
+                    {% csrf_token %}
+                    <label for="nome_cliente" class="text-label">Nome</label>
+                    {% render_field form.nome_completo class="form-control" id="nome_cliente" placeholder="Nome" %}
+                    <br>
+                    <label for="cpf_cliente" class="text-label">CPF</label>
+                    {% render_field form.cpf class="form-control" id="cpf_cliente" placeholder="CPF" %}
+                    <br>
+                    <label for="nascimento_cliente" class="text-label">Data de Nascimento</label>
+                    {% render_field form.data_nascimento class="form-control" id="nascimento_cliente" placeholder="Data de Nascimento" %}
+                    <br>
+                    <label for="telefone_cliente" class="text-label">Telefone</label>
+                    {% render_field form.telefone class="form-control" id="telefone_cliente" placeholder="Telefone" %}
+                    <br>
+                    <label for="rua_cliente" class="text-label">Rua</label>
+                    {% render_field form.rua class="form-control" id="rua_cliente" placeholder="Rua" %}
+                    <br>
+                    <label for="bairro_cliente" class="text-label">Bairro</label>
+                    {% render_field form.bairro class="form-control" id="bairro_cliente" placeholder="Bairro" %}
+                    <br>
+                    <label for="cidade_cliente" class="text-label">Cidade</label>
+                    {% render_field form.cidade class="form-control" id="cidade_cliente" placeholder="Cidade" %}
+                    <br>
+                    <input class="btn-salvar" type="submit" value="SALVAR">
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock content %}

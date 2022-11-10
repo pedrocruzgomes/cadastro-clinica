@@ -67,6 +67,7 @@
                 <th>Raça</th>
                 <th>Data de Nascimento</th>
                 <th>Nome do Dono</th>
+                <th>Imagem</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -84,6 +85,13 @@
                 </td>
                 <td>{{ animal.nascimento|date:"d/m/Y" }}</td>
                 <td>{{ animal.nome_dono }}</td>
+                <td>
+                {% if animal.image %}
+                <a href="{{ animal.image.url }}" target="_blank">
+                    <img src="{{ animal.image.url }}" widget="150" height="150">
+                </a>
+                {% endif %}
+                </td>
                 <td>
                     <a href="{% url 'animal.atualizar' pk_cliente animal.pk %}" class="btn-acoes" id="btn-editar">Editar</a>
                     <a href="{% url 'animal.excluir' pk_cliente animal.pk %}" class="btn-acoes" id="btn-excluir">Excluir</a>

@@ -50,10 +50,10 @@ def animais(request, pk_cliente):
 def animal_novo(request, pk_cliente):
     form = AnimalForm()
     if request.method == "POST":
-        form = AnimalForm(request.POST)
+        form = AnimalForm(request.POST, request.FILES)
         if form.is_valid():
             animal = form.save(commit=False)
-            animal.cliente_id = pk_cliente;
+            animal.cliente_id = pk_cliente
             animal.save()
             return redirect(reverse('cliente.animais', args=[pk_cliente]))
 
@@ -64,7 +64,7 @@ def animal_editar(request, pk_cliente, pk):
     animal = get_object_or_404(Animal, pk=pk)
     form = AnimalForm(instance=animal)
     if request.method == "POST":
-        form = AnimalForm(request.POST, instance=animal)
+        form = AnimalForm(request.POST, request.FILES, instance=animal)
         if form.is_valid():
             form.save()
             return redirect(reverse('cliente.animais', args=[pk_cliente]))

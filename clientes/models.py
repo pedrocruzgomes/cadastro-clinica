@@ -23,6 +23,7 @@ class Animal(models.Model):
     nascimento = models.DateField(null=True)
     nome_dono = models.CharField(max_length=256, null=False, blank=False)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/', null=True)
 
     def __str__(self) -> str:
         return self.nome

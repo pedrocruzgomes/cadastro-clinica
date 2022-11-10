@@ -1,1 +1,74 @@
 {% extends "main/base.html" %}
+{% block content %}
+<style>
+    .card-clientes{
+        width: 50vw;
+        height: 20vh;
+        width: 40%;
+        margin-top: 50px;
+        margin-left: 50px;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 15px;
+        background-color: #3A5E5E;
+        border-radius: 20px;
+        box-shadow: 0px 10px 40px black;
+    }
+    .card-cadastrar-cliente{
+        width: 50vw;
+        height: 20vh;
+        width: 40%;
+        margin-top: 50px;
+        margin-left: 50px;
+        display: flex;
+        flex-direction: column;
+        padding: 10px 15px;
+        background-color: #3A5E5E;
+        border-radius: 20px;
+        box-shadow: 0px 10px 40px black;
+    }
+    .cards{
+        width: 100vw;
+        display: flex;
+    }
+    #btn-lista{
+        background-color: #85D6D5;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        color: black;
+        padding: 5px 7px;
+        text-align: center;
+        font-weight: 700;
+    }
+    #btn-clientes{
+        background-color: #85D6D5;
+        text-decoration: none;
+        border-radius: 5px;
+        border: none;
+        color: black;
+        padding: 5px 7px;
+        text-align: center;
+        font-weight: 700;
+    }
+    p{
+        margin-bottom: 30px;
+    }
+</style>
+<div class="cards">
+    <div class="card-clientes">
+        <h2>Lista de Clientes</h2>
+        <div class="text-clientes">
+            <p>Veja aqui a lista de clientes cadastrados.</p>
+            <a href="{%  url 'cliente.index' %}" id="btn-lista">Vá para a lista</a>
+        </div>
+    </div>
+    <div class="card-cadastrar-cliente">
+        <h2>Cadastrar Cliente</h2>
+        <div class="text-cadastrar">
+            <p>Cadastre um novo cliente aqui.</p>
+            <a href="{%  url 'cliente.novo' %}" id="btn-clientes">Novo cliente</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}
