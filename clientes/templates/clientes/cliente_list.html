@@ -4,6 +4,7 @@
     table tbody tr{
         text-align: center;
         background-color: rgb(240, 240, 240);
+        height: 40px;
     }
     table thead tr{
         background-color: #85D6D5;
@@ -20,111 +21,109 @@
         margin-bottom: 15px;
         margin-left: 15px;
         width: 98%;
-        table-layout: auto; 
-    }
-    .card-table{
-        width: 98%;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: #5a8d8d;
-        border-radius: 15px;
-        margin: 20px;
+        table-layout: auto;
+        border: 3px solid black; 
     }
     .filtro{
         text-align: center;
-        margin-left: 600px;
-        margin-top: 15px;
-        border: 1px solid black;
+        margin-left: 985px;
+        border: 2px solid black;
+        border-radius: 5px;
+        padding: 5px 5px;
     }
     .btn-novo{
         background-color: yellowgreen;
         text-decoration: none;
-        border-radius: 20px;
+        border-radius: 5px;
         color: black;
         padding: 5px 5px;
-        border: 1px solid black;
-        margin-left: 20px;
+        border: 2px solid black;
+        margin-left: 15px;
+        font-weight: bold;
     }
     #btn-excluir{
         background-color: red;
         text-decoration: none;
-        border-radius: 15px;
+        border-radius: 5px;
         color: white;
         padding: 5px 5px;
-        margin:1px;
-        display: flex;
-        width: 60px;
-        border: 1px solid black;
+        margin: 1px;
     }
     #btn-editar{
         background-color: blue;
         text-decoration: none;
-        border-radius: 15px;
+        border-radius: 5px;
         color: white;
         padding: 5px 5px;
-        margin:1px;
-        display: flex;
-        width: 60px;
-        border: 1px solid black;
+        margin: 1px;
     }
     #btn-animais{
         background-color: green;
         text-decoration: none;
-        border-radius: 15px;
+        border-radius: 5px;
         color: white;
         padding: 5px 5px;
-        margin:1px;
-        display: flex;
-        width: 60px;
-        border: 1px solid black;
+        margin: 1px;
     }
     .clientes-cadastrados{
         text-align: center;
     }
+    .itens-table{
+        display: flex;
+    }
+    .btn-filtro{
+        background-color: blue;
+        border-radius: 5px;
+        color: white;
+        padding: 5px 5px;
+        border: 2px solid black;
+        cursor: pointer;
+        font-weight: bold;
+    }
 </style>
-<form method="GET">
-    <input class="filtro" type="text" name="nome" placeholder="Buscar por nome ou CPF"/>
-    <input type="submit" value="Buscar">
-</form>
 <div class="clientes-cadastrados">
     <h3>CLIENTES CADASTRADOS</h3>
 </div>
-<a href="{%  url 'cliente.novo' %}" class="btn-novo">Adicionar Cliente</a>
-<div class="card-table">
-    <div style="overflow-x:auto">
-        <table border="1px">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Data de Nascimento</th>
-                    <th>Telefone</th>
-                    <th>Rua</th>
-                    <th>Bairro</th>
-                    <th>Cidade</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for cliente in object_list %}
-                <tr>
-                    <td>{{ cliente.nome_completo }}</td>
-                    <td>{{ cliente.cpf }}</td>
-                    <td>{{ cliente.data_nascimento|date:"d/m/Y" }}</td>
-                    <td>{{ cliente.telefone }}</td>
-                    <td>{{ cliente.rua }}</td>
-                    <td>{{ cliente.bairro }}</td>
-                    <td>{{ cliente.cidade }}</td>
-                    <td>
-                        <a href="{% url 'cliente.atualizar' cliente.pk %}" class="btn-acoes" id="btn-editar">Editar</a>
-                        <a href="{% url 'cliente.excluir' cliente.pk %}" class="btn-acoes" id="btn-excluir">Excluir</a>
-                        <a href="{% url 'cliente.animais' cliente.pk %}" class="btn-acoes" id="btn-animais">Animais</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+<div class="itens-table">
+    <a href="{%  url 'cliente.novo' %}" class="btn-novo">Adicionar Cliente</a>
+    <a href="{%  url 'cliente.exportar' %}" class="btn-novo">Exportar Dados</a> 
+    <form method="GET">
+        <input class="filtro" type="text" name="nome" placeholder="Buscar por nome ou CPF"/>
+        <input class="btn-filtro" type="submit" value="Buscar">
+    </form>
+</div>
+<div style="overflow-x:auto">
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Data de Nascimento</th>
+                <th>Telefone</th>
+                <th>Rua</th>
+                <th>Bairro</th>
+                <th>Cidade</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in object_list %}
+            <tr>
+                <td>{{ cliente.nome_completo }}</td>
+                <td>{{ cliente.cpf }}</td>
+                <td>{{ cliente.data_nascimento|date:"d/m/Y" }}</td>
+                <td>{{ cliente.telefone }}</td>
+                <td>{{ cliente.rua }}</td>
+                <td>{{ cliente.bairro }}</td>
+                <td>{{ cliente.cidade }}</td>
+                <td>
+                    <a href="{% url 'cliente.atualizar' cliente.pk %}" class="btn-acoes" id="btn-editar">Editar</a>
+                    <a href="{% url 'cliente.excluir' cliente.pk %}" class="btn-acoes" id="btn-excluir">Excluir</a>
+                    <a href="{% url 'cliente.animais' cliente.pk %}" class="btn-acoes" id="btn-animais">Animais</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock content %}

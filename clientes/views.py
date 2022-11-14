@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Cliente, Animal
 from .forms import ClienteForm, AnimalForm
+from .resources import ClienteResource
 
 
 class ListaClienteView(ListView):
@@ -75,3 +76,11 @@ def animal_editar(request, pk_cliente, pk):
 class AnimalDeleteView(DeleteView):
     model = Animal
     success_url = '/clientes/'
+
+
+def export(request):
+    cliente_resource = ClienteResource()
+    dataset = cliente_resource.export()
+    response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="clientes.xls"'
+    return response

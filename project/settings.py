@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'main',
     'clientes',
     'widget_tweaks',
-    'django_cleanup.apps.CleanupConfig'
+    'django_cleanup.apps.CleanupConfig',
+    'import_export'
 ]
 
 MIDDLEWARE = [
@@ -135,3 +136,5 @@ LOGOUT_REDIRECT_URL = '/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True

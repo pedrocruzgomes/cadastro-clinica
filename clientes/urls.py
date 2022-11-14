@@ -13,5 +13,5 @@ urlpatterns = [
     path('<int:pk_cliente>/animal/novo/', login_required(views.animal_novo), name='animal.novo'),
     path('<int:pk_cliente>/animal/<int:pk>/atualizar', login_required(views.animal_editar), name='animal.atualizar'),
     path('<int:pk_cliente>/animal/<int:pk>/excluir', login_required(AnimalDeleteView.as_view()), name='animal.excluir'),
-
+    path('exportar/xlsx', login_required(views.export), name='cliente.exportar')
 ]
