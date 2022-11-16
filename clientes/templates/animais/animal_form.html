@@ -1,8 +1,103 @@
 {% extends "main/base.html" %}
+{% load widget_tweaks %}
 {% block content %}
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Salvar">
-    </form>
+<style>
+    body{
+        margin: 0;
+    }
+    .main-cadastro-animal{
+        background-color: #cfb699;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cadastro-animal{
+        width: 50vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .card-cadastro-animal{
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px 35px;
+        background-color: #9e6d4e;
+        border-radius: 20px;
+        box-shadow: 0px 10px 40px black;
+    }
+    .card-cadastro-animal h1{
+        color: #000000;
+        font-weight: 800;
+        margin: 0;
+    }
+    .formulario{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .form-control{
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        background-color: white;
+        outline: none;
+        box-sizing: border-box;
+    }
+    .textfield label{
+        color: black;
+        margin-bottom: 10px;
+    }
+    .textfield{
+        width: 100%;
+    }
+    .btn-salvar{
+        width: 100%;
+        padding: 16px 0px;
+        margin-top: 25px;
+        border: none;
+        border-radius: 8px;
+        outline: none;
+        font-weight: 800;
+        background-color: #e7bfa5;
+        cursor: pointer;
+    }
+</style>
+<div class="main-cadastro-animal">
+    <div class="cadastro-animal">
+        <div class="card-cadastro-animal">
+            <h3>CADASTRO DE ANIMAL</h3>
+            <div class="textfield">
+                <form class="formulario" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="tipo_animal" class="text-label">Tipo Animal</label>
+                    {% render_field form.tipo_animal class="form-control" id="tipo_animal" placeholder="Tipo Animal" %}
+                    <br>
+                    <label for="nome" class="text-label">Nome</label>
+                    {% render_field form.nome class="form-control" id="nome" placeholder="Nome" %}
+                    <br>
+                    <label for="raca" class="text-label">Raça</label>
+                    {% render_field form.raca class="form-control" id="raca" placeholder="Raça" %}
+                    <br>
+                    <label for="nascimento" class="text-label">Data de Nascimento</label>
+                    {% render_field form.nascimento class="form-control" id="nascimento" placeholder="Data de Nascimento" %}
+                    <br>
+                    <label for="nome_dono" class="text-label">Nome do Dono</label>
+                    {% render_field form.nome_dono class="form-control" id="nome_dono" placeholder="Nome do Dono" %}
+                    <br>
+                    <label for="image" class="text-label">Imagem</label>
+                    {% render_field form.image class="form-control" id="image" placeholder="Imagem" %}
+                    <br>
+                    <input class="btn-salvar" type="submit" value="SALVAR">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

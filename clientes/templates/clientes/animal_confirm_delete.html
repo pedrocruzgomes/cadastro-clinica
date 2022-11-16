@@ -1,5 +1,52 @@
-<form method="post">
-    {% csrf_token %}
-    <p>Você tem certeza que deseja excluir "{{ object }}"?</p>
-    <input type="submit" value="Confirmar">
-</form>
+{% extends "main/base.html" %}
+{% block content %}
+<style>
+    body{
+        margin: 0;
+        background-color: #cfb699;
+    }
+    p{
+        font-weight: bold;
+    }
+    .card-exclusao{
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    .btn-cancel{
+        text-decoration: none;
+        color: black;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: #e7bfa5;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 5px 5px;
+        font-size: 15px;
+    }
+    .btn-confirm{
+        text-decoration: none;
+        color: black;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: #e7bfa5;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 5px 5px;
+        font-size: 15px;
+    }
+    .btn-confirm:hover{
+        background-color: red;
+    }
+    .btn-cancel:hover{
+        background-color: rgb(207, 207, 207);
+    }
+</style>
+<div class="card-exclusao">
+    <form method="post">
+        {% csrf_token %}
+        <p>Você tem certeza que deseja excluir o animal {{ object }}?</p>
+        <a href="{% url 'cliente.index' %}" class="btn-cancel">Cancelar</a>
+        <input type="submit" class="btn-confirm" value="Excluir">
+    </form>
+</div>
+{% endblock content %}

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, register
+from .views import HomeView, register, login
 from django.contrib.auth.decorators import login_required
 
 urlpatterns = [

@@ -1,62 +1,75 @@
 {% extends "main/base.html" %}
 {% block content %}
 <style>
-    table tbody tr{
+       table tbody tr{
         text-align: center;
-        background-color: white;
+        background-color: rgb(240, 240, 240);
+        height: 40px;
     }
     table thead tr{
-        background-color: black;
-        color: white;
+        background-color: #85D6D5;
+        color: black;
         border-collapse: collapse;
-        border: 1px white;
         height: 30px;
+    }
+    tbody tr:hover{
+        background-color: white;
     }
     table{
         border-collapse: collapse;
-        border: 2px solid black;
         margin-top: 15px;
         margin-bottom: 15px;
         margin-left: 15px;
         width: 98%;
         table-layout: auto;
+        border: 3px solid black; 
     }
-    tbody tr:hover{
-        background-color: gray;
+    .animais-cadastrados{
+        text-align: center;
     }
-    .btn-acoes{
-        background-color: white;
-        text-decoration: none;
-        border: 2px solid black;
-        border-radius: 5px;
-        color: black;
-        padding: 5px 5px;
-        display: flex;
-        margin:1px;
-        width: 50px;
-    }
-    #btn-excluir:hover{
+    #btn-excluir{
         background-color: red;
+        text-decoration: none;
+        border-radius: 5px;
+        color: white;
+        padding: 5px 5px;
+        margin: 1px;
     }
-    #btn-editar:hover{
-        background-color: green;
+    #btn-editar{
+        background-color: blue;
+        text-decoration: none;
+        border-radius: 5px;
+        color: white;
+        padding: 5px 5px;
+        margin: 1px;
     }
     .btn-novo{
-        background-color: white;
+        background-color: yellowgreen;
         text-decoration: none;
-        border: 2px solid black;
         border-radius: 5px;
         color: black;
-        text-align: center;
         padding: 5px 5px;
-        margin-top: 5px;
+        border: 2px solid black;
+        margin-left: 15px;
+        font-weight: bold;
     }
-    .btn-novo:hover{
-        background-color: aqua;
+    .btn-voltar{
+        background-color: yellowgreen;
+        text-decoration: none;
+        border-radius: 5px;
+        color: black;
+        padding: 5px 5px;
+        border: 2px solid black;
+        margin-left: 15px;
+        font-weight: bold;
     }
 </style>
-<div>
-    <h3>Animais Cadastrados</h3>
+<div class="animais-cadastrados">
+    <h3>ANIMAIS CADASTRADOS</h3>
+</div>
+<div class="itens-table">
+    <a href="{%  url 'animal.novo' pk_cliente %}" class="btn-novo">Adicionar Animal</a>
+    <a href="{%  url 'cliente.index' %}" class="btn-voltar">Voltar</a>
 </div>
 <div style="overflow-x:auto">
     <table border="1px">
@@ -88,7 +101,7 @@
                 <td>
                 {% if animal.image %}
                 <a href="{{ animal.image.url }}" target="_blank">
-                    <img src="{{ animal.image.url }}" widget="150" height="150">
+                    <img src="{{ animal.image.url }}" widget="150" height="80">
                 </a>
                 {% endif %}
                 </td>
@@ -101,6 +114,4 @@
         </tbody>
     </table>
 </div>
-<a href="{%  url 'animal.novo' pk_cliente %}" class="btn-novo">Adicionar Animal</a>
-<a href="{%  url 'cliente.index' %}" class="btn-novo">Voltar</a>
 {% endblock content %}
