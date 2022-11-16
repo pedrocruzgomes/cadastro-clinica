@@ -13,7 +13,3 @@ class ClienteResource(resources.ModelResource):
     class Meta:
         model = Cliente
         fields = ['nome_completo', 'cpf', 'data_nascimento', 'telefone', 'rua', 'bairro', 'cidade']
-        widgets = {
-            'data_nascimento': {'format': '%d/%m/%Y'}
-        }
-        

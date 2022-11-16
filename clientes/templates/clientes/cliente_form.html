@@ -5,13 +5,13 @@
     body{
         margin: 0;
     }
-    .main-cadastro-cliente{
+    .cadastro-cliente{
         background-color: #cfb699;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-    .cadastro-cliente{
+    .cadastro-cliente-principal{
         width: 50vw;
         display: flex;
         justify-content: center;
@@ -50,11 +50,11 @@
         outline: none;
         box-sizing: border-box;
     }
-    .textfield label{
+    .textos label{
         color: black;
         margin-bottom: 10px;
     }
-    .textfield{
+    .textos{
         width: 100%;
     }
     .btn-salvar{
@@ -69,11 +69,11 @@
         cursor: pointer;
     }
 </style>
-<div class="main-cadastro-cliente">
-    <div class="cadastro-cliente">
+<div class="cadastro-cliente">
+    <div class="cadastro-cliente-principal">
         <div class="card-cadastro-cliente">
             <h3>CADASTRO DE CLIENTE</h3>
-            <div class="textfield">
+            <div class="textos">
                 <form class="formulario" method="post">
                     {% csrf_token %}
                     <label for="nome_cliente" class="text-label">Nome</label>

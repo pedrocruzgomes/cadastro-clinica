@@ -5,7 +5,11 @@
     body{
         margin: 0;
     }
-    .main-cadastro{
+    .texto-dicas{
+        font-size: 11px;
+        font-weight: bold;
+    }
+    .cadastro{
         width: 100vw;
         height: 100vh;
         background-color: #cfb699;
@@ -13,8 +17,8 @@
         justify-content: center;
         align-items: center;
     }
-    .cadastro{
-        width: 70vw;
+    .cadastro-principal{
+        width: 50vw;
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -29,7 +33,6 @@
         padding: 30px 35px;
         background-color: #9e6d4e;
         border-radius: 20px;
-        box-shadow: 0px 10px 40px black;
     }
     .card-cadastro h1{
         color: #000000;
@@ -51,11 +54,11 @@
         outline: none;
         box-sizing: border-box;
     }
-    .textfield label{
+    .textos label{
         color: black;
         margin-bottom: 10px;
     }
-    .textfield{
+    .textos{
         width: 100%;
     }
     .btn-cadastrar{
@@ -69,7 +72,7 @@
         background-color: #e7bfa5;
         cursor: pointer;
     }
-    .text-center{
+    .texto-ajuda{
         color: black;
         text-align: center;
         display: flex;
@@ -89,52 +92,34 @@
         text-align: center;
         padding-top: 13px;
     }
-    .text-obs-cadastro{
-        width: 600px;
-        margin-left: 30px;
-        background-color: #9e6d4e;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        border-radius: 20px;
-        padding: 30px 35px;
-    }
 </style>
-<div class="main-cadastro">
-    <div class="cadastro">
+<div class="cadastro">
+    <div class="cadastro-principal">
         <div class="card-cadastro">
             <h1>CADASTRE-SE</h1>
-            <div class="textfield">
+            <div class="textos">
                 <form class="formulario" method="POST">
                     {% csrf_token %}
                     <label for="username">Usuário</label>
                     {% render_field form.username class="form-control" id="username" placeholder="Usuário" %}
-                    <br>
+                    <p class="texto-dicas">Seu usuário deve ser único.</p>
                     <label for="email">Email</label>
                     {% render_field form.email class="form-control" id="email" placeholder="Email" %}
-                    <br>
+                    <p class="texto-dicas">Seu e-mail deve ser um e-mail válido.</p>
                     <label for="password1">Senha</label>
                     {% render_field form.password1 class="form-control" id="password1" placeholder="Senha" %}
-                    <br>
+                    <p class="texto-dicas">Sua senha deve ser diferente de suas informações pessoais.</p>
+                    <p class="texto-dicas">Sua senha precisa conter pelo menos 8 caracteres.</p>
+                    <p class="texto-dicas">Sua senha não pode ser uma senha comumente utilizada.</p>
+                    <p class="texto-dicas">Sua senha não pode ser inteiramente numérica.</p>
                     <label for="password2">Confirmação de Senha</label>
                     {% render_field form.password2 class="form-control" id="password2" placeholder="Senha" %}
-                    <br>
                     <button class="btn-cadastrar" type="submit">CADASTRAR</button>
                 </form>
-                <p class="text-center">Já possui conta?
+                <p class="texto-ajuda">Já possui conta?
                     <a href="/accounts/login" class="btn-entrar">Entrar</a>
                 </p>
             </div>
-        </div>
-        <div class="text-obs-cadastro">
-            <h3>OBSERVAÇÕES PARA CADASTRO</h3>
-            <p>Seu usuário deve ser único.</p>
-            <p>Seu e-mail deve ser um e-mail válido.</p>
-            <p>Sua senha não pode ser muito parecida <br> o resto das suas informações pessoais.</p>
-            <p>Sua senha precisa conter pelo menos 8 caracteres.</p>
-            <p>Sua senha não pode ser uma senha comumente utilizada.</p>
-            <p>Sua senha não pode ser inteiramente numérica.</p>
         </div>
     </div>
 </div>
