@@ -26,7 +26,8 @@
     }
     .filtro{
         text-align: center;
-        margin-left: 985px;
+        margin-left: 15px;
+        margin-top: 15px;
         border: 2px solid black;
         border-radius: 5px;
         padding: 5px 5px;
@@ -87,6 +88,8 @@
 <div class="itens-table">
     <a href="{%  url 'cliente.novo' %}" class="btn-novo">Adicionar Cliente</a>
     <a href="{%  url 'cliente.exportar' %}" class="btn-novo">Exportar Dados</a> 
+</div>
+<div>
     <form method="GET">
         <input class="filtro" type="text" name="nome" placeholder="Buscar por nome ou CPF"/>
         <input class="btn-filtro" type="submit" value="Buscar">
