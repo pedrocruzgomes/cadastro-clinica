@@ -4,6 +4,6 @@ O site é para armazenar dados dos clientes e animais de uma clínica veterinár
 
 Deixei alguns cadastros para vocês testarem, fiquem a vontade
 
-O usuário para entrar no site é "teste"
+O usuário para entrar no sistema é "teste"
 
-A senha para entrar no site é "usuarioteste123"
+A senha para entrar no sistema é "usuarioteste123"
