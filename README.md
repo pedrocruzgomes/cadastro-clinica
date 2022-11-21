@@ -8,7 +8,7 @@ O usuário para entrar no sistema é "teste"
 
 A senha para entrar no sistema é "usuarioteste123"
 
-Para a instalar todas as pendências do projeto é preciso seguir alguns passos:
+Para instalar todas as pendências do projeto é preciso seguir alguns passos:
 
 1- Baixar o arquivo .zip com todo o código direto do github
 
